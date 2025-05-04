@@ -34,8 +34,9 @@ async def registrar_gasto(update: Update, context: ContextTypes.DEFAULT_TYPE):
         valor = float(partes[1])
         user_id = update.message.from_user.id
         adicionar_gasto(user_id, categoria, valor)
+        await  update.message.reply_text(f"{categoria} R${valor:.2f} Adicionado!")
     except Exception as e:
-        await update.message.reply_text("Formato inválido. Exemplo: `Transporte 20.50`",  parse_mode="Markdown")
+        await update.message.reply_text("Formato inválido. Exemplo: `Transporte-Ônibus 20.50`",  parse_mode="Markdown")
 
 async def resumo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
@@ -80,9 +81,7 @@ if __name__ == "__main__":
     from os import getenv
     import  asyncio
 
-    import os
-    TOKEN = os.getenv("TOKEN")
-
+    TOKEN = ""
     app = ApplicationBuilder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
