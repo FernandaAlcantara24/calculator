@@ -81,7 +81,11 @@ if __name__ == "__main__":
     from os import getenv
     import  asyncio
 
-    TOKEN = ""
+    import os
+    from telegram.ext import ApplicationBuilder
+
+    TOKEN = os.getenv("TOKEN")  # Busca o token da variável de ambiente
+
     app = ApplicationBuilder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
