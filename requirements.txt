@@ -1,2 +1,5 @@
-python-telegram-bot==20.3
-matplotlib==3.7.1
+numpy<2
+matplotlib
+python-telegram-bot
+python-dotenv
+
